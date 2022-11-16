@@ -210,7 +210,7 @@ def create_app(test_config=None):
             previous_questions = body.get("previous_questions")
             category_id = body['quiz_category']['id']
 
-            selection = Question.query.filter(or_(Question.category == category_id, category_id == '0'),
+            selection = Question.query.filter(or_(Question.category == category_id, category_id == 0),
                                               or_(len(previous_questions) == 0,~Question.id.in_(previous_questions)))
             questions = [book.format() for book in selection]
             if len(questions) == 0:

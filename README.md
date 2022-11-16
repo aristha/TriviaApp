@@ -14,6 +14,9 @@ Developers using this project should already have Python3, pip and node installe
 From the backend folder run pip install requirements.txt. All required packages are included in the requirements file.
 To run the application run the following commands:
 ```console
+python -m virtualenv env
+source env/Scripts/activate
+pip3 install -r requirements.txt
 export DB_HOST=127.0.0.1:5433 # host DB postgresql
 export DB_USER=postgres # USER DB
 export DB_PASSWORD=admin # password DB
