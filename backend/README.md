@@ -1,29 +1,8 @@
 # Backend - Trivia API
 
 ## Setting up the Backend
-
-### Install Dependencies
-
-1. **Python 3.7** - Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
-
-2. **Virtual Environment** - We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organized. Instructions for setting up a virual environment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-
-3. **PIP Dependencies** - Once your virtual environment is setup and running, install the required dependencies by navigating to the `/backend` directory and running:
-
-```bash
-python -m virtualenv env
-source env/Scripts/activate
-pip3 install -r requirements.txt
-```
-
-#### Key Pip Dependencies
-
-- [Flask](http://flask.pocoo.org/) is a lightweight backend microservices framework. Flask is required to handle requests and responses.
-
-- [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use to handle the lightweight SQL database. You'll primarily work in `app.py`and can reference `models.py`.
-
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross-origin requests from our frontend server.
-
+Pre-requisites and Local Development
+Developers using this project should already have Python3, pip and node installed on their local machines.
 ### Set up the Database
 
 With Postgres running, create a `trivia` database:
@@ -40,17 +19,24 @@ psql trivia < trivia.psql
 
 ### Run the Server
 
-From within the `./src` directory first ensure you are working using your created virtual environment.
+From the backend folder run
+
 python -m virtualenv env
+source env/Scripts/activate
+pip3 install -r requirements.txt
+
 To run the server, execute:
 
 ```bash
-set FLASK_APP=flaskr
-set FLASK_ENV=development # enables debug mode
+export DB_HOST=127.0.0.1:5433 # host DB postgresql
+export DB_USER=postgres # USER DB
+export DB_PASSWORD=admin # password
+export DB_NAME=trivia
+export FLASK_APP=flaskr
+export FLASK_DEBUG=true # enables debug mode
 flask run --reload
 ```
-
-The `--reload` flag will detect file changes and restart the server automatically.
+The application is run on http://127.0.0.1:5000/ by default and is a proxy in the frontend configuration
 
 ## To Do Tasks
 
@@ -59,7 +45,7 @@ These are the files you'd want to edit in the backend:
 1. `backend/flaskr/__init__.py`
 2. `backend/test_flaskr.py`
 
-One note before you delve into your tasks: for each endpoint, you are expected to define the endpoint and response data. The frontend will be a plentiful resource because it is set up to expect certain endpoints and response data formats already. You should feel free to specify endpoints in your own way; if you do so, make sure to update the frontend or you will get some unexpected behavior.
+
 
 1. Use Flask-CORS to enable cross-domain requests and set response headers.
 2. Create an endpoint to handle `GET` requests for questions, including pagination (every 10 questions). This endpoint should return a list of questions, number of total questions, current category, categories.
